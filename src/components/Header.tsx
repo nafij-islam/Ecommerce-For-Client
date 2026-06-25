@@ -15,7 +15,8 @@ export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [announcement, setAnnouncement] = useState('Free delivery on orders over ৳3000');
-  const [storeName, setStoreName] = useState('Antigravity Fashion');
+  const [storeName, setStoreName] = useState('Rongher Chua Butiks');
+  const [logoUrl, setLogoUrl] = useState('/logo.png');
 
   useEffect(() => {
     // Read search parameter from window safely on client mount
@@ -30,6 +31,9 @@ export const Header: React.FC = () => {
         if (data.success && data.settings) {
           setAnnouncement(data.settings.announcementText);
           setStoreName(data.settings.storeName);
+          if (data.settings.logoUrl) {
+            setLogoUrl(data.settings.logoUrl);
+          }
         }
       })
       .catch(() => {});
@@ -55,8 +59,20 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between h-20 gap-4">
           
           {/* Logo */}
-          <Link href="/" className="font-playfair text-2xl font-bold tracking-tight text-brand-navy flex-shrink-0">
-            {storeName}
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 group">
+            {logoUrl ? (
+              <img
+                src={logoUrl}
+                alt={storeName}
+                className="h-10 w-auto object-contain rounded-md transition-transform duration-300 group-hover:scale-105"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            ) : null}
+            <span className="font-playfair text-xl font-bold tracking-tight text-brand-navy group-hover:text-brand-coral transition-colors duration-300">
+              {storeName}
+            </span>
           </Link>
 
           {/* Search bar */}

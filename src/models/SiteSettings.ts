@@ -27,10 +27,10 @@ export interface ISiteSettings extends Document {
 
 const SiteSettingsSchema = new Schema<ISiteSettings>(
   {
-    storeName: { type: String, required: true, default: 'Antigravity Fashion' },
-    logoUrl: { type: String, default: '' },
+    storeName: { type: String, required: true, default: 'Rongher Chua Butiks' },
+    logoUrl: { type: String, default: '/logo.png' },
     faviconUrl: { type: String, default: '' },
-    contactEmail: { type: String, required: true, default: 'contact@antigravity-fashion.com' },
+    contactEmail: { type: String, required: true, default: 'contact@rongherchuabutiks.com' },
     phone: { type: String, required: true, default: '+8801700000000' },
     address: { type: String, required: true, default: 'Dhaka, Bangladesh' },
     socialLinks: {
@@ -43,7 +43,7 @@ const SiteSettingsSchema = new Schema<ISiteSettings>(
     deliveryCharge: { type: Number, required: true, default: 120 },
     freeDeliveryMinAmount: { type: Number, required: true, default: 3000 },
     announcementText: { type: String, default: 'Free delivery on orders over ৳3000' },
-    footerText: { type: String, default: '© 2026 Antigravity Fashion. All Rights Reserved.' },
+    footerText: { type: String, default: '© 2026 Rongher Chua Butiks. All Rights Reserved.' },
     returnPolicy: { type: String, default: 'Easy 7-day returns on all unwashed dresses.' },
     privacyPolicy: { type: String, default: 'Your privacy is protected with SSL encryption.' },
     terms: { type: String, default: 'Standard e-commerce terms & conditions apply.' }

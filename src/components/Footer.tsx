@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const [storeName, setStoreName] = useState('Antigravity Fashion');
+  const [storeName, setStoreName] = useState('Rongher Chua Butiks');
+  const [logoUrl, setLogoUrl] = useState('/logo.png');
   const [phone, setPhone] = useState('+8801700000000');
-  const [email, setEmail] = useState('contact@antigravity-fashion.com');
+  const [email, setEmail] = useState('contact@rongherchuabutiks.com');
   const [address, setAddress] = useState('Dhaka, Bangladesh');
-  const [footerText, setFooterText] = useState('© 2026 Antigravity Fashion. All Rights Reserved.');
+  const [footerText, setFooterText] = useState('© 2026 Rongher Chua Butiks. All Rights Reserved.');
 
   useEffect(() => {
     fetch('/api/site-settings')
@@ -17,6 +18,9 @@ export const Footer: React.FC = () => {
       .then((data) => {
         if (data.success && data.settings) {
           setStoreName(data.settings.storeName);
+          if (data.settings.logoUrl) {
+            setLogoUrl(data.settings.logoUrl);
+          }
           setPhone(data.settings.phone);
           setEmail(data.settings.contactEmail);
           setAddress(data.settings.address);
@@ -32,9 +36,21 @@ export const Footer: React.FC = () => {
         
         {/* Brand column */}
         <div className="space-y-4">
-          <h3 className="font-playfair text-2xl font-bold tracking-tight text-white">
-            {storeName}
-          </h3>
+          <div className="flex items-center gap-2.5">
+            {logoUrl && (
+              <img
+                src={logoUrl}
+                alt={storeName}
+                className="h-9 w-auto object-contain rounded bg-white/10 p-0.5"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            )}
+            <h3 className="font-playfair text-2xl font-bold tracking-tight text-white">
+              {storeName}
+            </h3>
+          </div>
           <p className="text-sm text-white/60 leading-relaxed font-light">
             Crafting premium dresses and elegant outfits for girls and women. Discover your signature look with our pastel and soft coral themes.
           </p>

@@ -9,11 +9,12 @@ export async function GET() {
     if (!settings) {
       // Create default settings if not exists
       settings = await SiteSettings.create({
-        storeName: 'Antigravity Fashion',
+        storeName: 'Rongher Chua Butiks',
+        logoUrl: '/logo.png',
         announcementText: 'Free delivery on orders over ৳3000',
-        footerText: '© 2026 Antigravity Fashion. All Rights Reserved.',
+        footerText: '© 2026 Rongher Chua Butiks. All Rights Reserved.',
         phone: '+8801700000000',
-        contactEmail: 'contact@antigravity-fashion.com',
+        contactEmail: 'contact@rongherchuabutiks.com',
         address: 'Dhaka, Bangladesh',
         deliveryCharge: 120,
         freeDeliveryMinAmount: 3000,

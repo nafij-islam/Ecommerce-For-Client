@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Antigravity Fashion | Premium Dresses & Outfits',
+  title: 'Rongher Chua Butiks | Premium Dresses & Outfits',
   description: 'Shop modern, elegant, premium feminine fashion outfits, dresses, and accessories.',
 };
 
