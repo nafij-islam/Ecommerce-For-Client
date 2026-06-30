@@ -283,28 +283,28 @@ export default function HomePage() {
 
       {/* Sales Promotional Banner */}
       <section className="my-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-[48px] overflow-hidden shadow-md border border-gray-100 grid grid-cols-1 lg:grid-cols-12 min-h-[460px] items-center relative group">
+        <div className="bg-white rounded-[48px] overflow-hidden shadow-md border border-gray-100 flex flex-col lg:grid lg:grid-cols-12 min-h-0 lg:min-h-[460px] items-center relative group">
           
           {/* Left Column (Content) */}
-          <div className="lg:col-span-7 p-10 sm:p-16 space-y-8 flex flex-col justify-center z-10">
+          <div className="w-full lg:col-span-7 p-6 sm:p-12 lg:p-16 space-y-6 lg:space-y-8 flex flex-col justify-center order-last lg:order-first z-10">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 bg-[#4A148C]/10 text-[#4A148C] text-xs uppercase font-bold tracking-widest px-4.5 py-2 rounded-full border border-purple-500/10">
                 <span className="w-2 h-2 rounded-full bg-[#4A148C] animate-pulse"></span>
                 <span>Season Sale Banner</span>
               </div>
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#4A148C] leading-tight">
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#4A148C] leading-tight">
                 {salesBanner.title}
               </h2>
             </div>
             
-            <p className="text-[#333333]/85 font-light text-base sm:text-lg leading-relaxed max-w-xl">
+            <p className="text-[#333333]/85 font-light text-sm sm:text-lg leading-relaxed max-w-xl">
               {salesBanner.subtitle}
             </p>
             
             <div>
               <Link
                 href={salesBanner.ctaLink || '/shop?isOnSale=true'}
-                className="inline-flex items-center justify-center bg-[#4A148C] hover:bg-[#5C2C7A] text-white px-10 py-4.5 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center justify-center bg-[#4A148C] hover:bg-[#5C2C7A] text-white px-8 py-3.5 sm:px-10 sm:py-4.5 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105"
               >
                 <span>{salesBanner.ctaText || 'Discover Sale'}</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
@@ -313,7 +313,7 @@ export default function HomePage() {
           </div>
 
           {/* Right Column (Image) */}
-          <div className="lg:col-span-5 h-80 lg:h-full w-full relative min-h-[350px] lg:min-h-[460px] overflow-hidden">
+          <div className="w-full h-64 sm:h-80 lg:h-full lg:col-span-5 relative overflow-hidden order-first lg:order-last z-10">
             <Image
               src={salesBanner.imageUrl}
               alt="Promotion Dress"
