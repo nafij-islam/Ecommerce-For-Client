@@ -134,32 +134,32 @@ export default function HomePage() {
                 }`}
               >
                 {/* Left Column (Content) */}
-                <div className="lg:col-span-7 p-10 sm:p-16 space-y-8 flex flex-col justify-center">
+                <div className="relative z-10 lg:col-span-7 p-6 sm:p-16 space-y-6 lg:space-y-8 flex flex-col justify-center bg-white/90 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none h-full lg:h-auto">
                   <div className="space-y-4">
                     <div className="inline-flex items-center gap-2 bg-[#4A148C]/10 text-[#4A148C] text-xs uppercase font-bold tracking-widest px-4.5 py-2 rounded-full border border-purple-500/10">
                       <span className="w-2 h-2 rounded-full bg-[#4A148C] animate-pulse"></span>
                       <span>Exclusive Season Arrival</span>
                     </div>
-                    <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#4A148C] leading-tight">
+                    <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#4A148C] leading-tight">
                       {slide.title}
                     </h1>
                   </div>
                   
-                  <p className="text-[#333333]/85 font-light text-base sm:text-lg leading-relaxed max-w-xl">
+                  <p className="text-[#333333]/85 font-light text-sm sm:text-lg leading-relaxed max-w-xl">
                     {slide.subtitle}
                   </p>
                   
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-3 sm:gap-4">
                     <Link
                       href={slide.ctaLink || '/shop'}
-                      className="inline-flex items-center justify-center bg-[#4A148C] hover:bg-[#5C2C7A] text-white px-8 py-4 rounded-full font-bold shadow-md transition-all duration-300 hover:scale-105"
+                      className="inline-flex items-center justify-center bg-[#4A148C] hover:bg-[#5C2C7A] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold shadow-md transition-all duration-300 hover:scale-105"
                     >
                       <span>{slide.ctaText || 'Shop Now'}</span>
                       <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                     <Link
                       href="/shop?isNewArrival=true"
-                      className="inline-flex items-center justify-center bg-white border border-gray-200 hover:bg-gray-50 text-[#2C3E50] px-8 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105"
+                      className="inline-flex items-center justify-center bg-white border border-gray-200 hover:bg-gray-50 text-[#2C3E50] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 hover:scale-105"
                     >
                       View Collection
                     </Link>
@@ -167,7 +167,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Right Column (Image) */}
-                <div className="lg:col-span-5 h-80 lg:h-full w-full relative overflow-hidden">
+                <div className="absolute inset-0 lg:relative lg:col-span-5 h-full w-full overflow-hidden z-0 lg:z-10">
                   <Image
                     src={slide.imageUrl}
                     alt="Model Dress"
@@ -175,7 +175,7 @@ export default function HomePage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     priority={idx === 0}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-gray-50/20 to-transparent mix-blend-multiply"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-white/30 via-white/10 lg:from-gray-50/20 to-transparent mix-blend-multiply"></div>
                 </div>
               </div>
             ))}
