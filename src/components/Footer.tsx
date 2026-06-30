@@ -37,16 +37,14 @@ export const Footer: React.FC = () => {
         {/* Brand column */}
         <div className="space-y-4">
           <div className="flex items-center gap-2.5">
-            {logoUrl && (
-              <img
-                src={logoUrl}
-                alt={storeName}
-                className="h-9 w-auto object-contain rounded bg-white/10 p-0.5"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-            )}
+            <img
+              src="/logo.png"
+              alt={storeName}
+              className="h-11 w-11 rounded-full object-cover border-2 border-white/20 shadow-xs"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/logo.png';
+              }}
+            />
             <h3 className="font-serif text-2xl font-bold tracking-tight text-white">
               {storeName}
             </h3>

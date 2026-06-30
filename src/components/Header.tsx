@@ -80,16 +80,14 @@ export const Header: React.FC = () => {
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 group">
-            {logoUrl ? (
-              <img
-                src={logoUrl}
-                alt={storeName}
-                className="h-10 w-auto object-contain rounded-md transition-transform duration-300 group-hover:scale-105"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-            ) : null}
+            <img
+              src="/logo.png"
+              alt={storeName}
+              className="h-12 w-12 rounded-full object-cover border-2 border-[#4A148C]/20 shadow-xs transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/logo.png';
+              }}
+            />
             <span className="font-serif text-xl font-bold tracking-tight text-[#2C3E50] group-hover:text-[#4A148C] transition-colors duration-300">
               {storeName}
             </span>
