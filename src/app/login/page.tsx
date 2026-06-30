@@ -58,15 +58,15 @@ function LoginContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-white text-[#333333] font-sans">
       <Header />
 
-      <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 bg-white p-8 sm:p-10 rounded-[32px] border border-gray-100 shadow-sm text-center">
+      <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#FAF9F5]">
+        <div className="max-w-md w-full space-y-8 bg-white p-8 sm:p-10 rounded-[32px] border border-gray-150 shadow-sm text-center">
           
           {/* Header */}
           <div className="space-y-2">
-            <h2 className="font-playfair text-3xl font-bold text-brand-navy">Welcome Back</h2>
+            <h2 className="font-serif text-3xl font-bold text-[#2C3E50]">Welcome Back</h2>
             <p className="text-gray-500 font-light text-xs sm:text-sm">
               Log in to access your dashboard, addresses, and wishlist.
             </p>
@@ -82,7 +82,7 @@ function LoginContent() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-brand-coral bg-gray-50/50"
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-[#4A148C] focus:border-[#4A148C] bg-white text-[#333333]"
                 />
                 <Mail className="absolute left-3.5 top-3.5 text-gray-400 w-4 h-4" />
               </div>
@@ -91,7 +91,7 @@ function LoginContent() {
             <div className="space-y-1">
               <div className="flex justify-between items-center">
                 <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Password</label>
-                <Link href="#" className="text-xs font-semibold text-brand-coral hover:underline" onClick={() => showToast('Password reset link simulated.', 'info')}>
+                <Link href="#" className="text-xs font-semibold text-[#4A148C] hover:underline" onClick={() => showToast('Password reset link simulated.', 'info')}>
                   Forgot?
                 </Link>
               </div>
@@ -101,7 +101,7 @@ function LoginContent() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-brand-coral bg-gray-50/50"
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-[#4A148C] focus:border-[#4A148C] bg-white text-[#333333]"
                 />
                 <Lock className="absolute left-3.5 top-3.5 text-gray-400 w-4 h-4" />
               </div>
@@ -110,7 +110,7 @@ function LoginContent() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full bg-brand-coral hover:bg-brand-coral-hover text-white py-3 rounded-full font-semibold shadow-xs flex items-center justify-center gap-2 transition-all duration-300 disabled:bg-gray-300"
+              className="w-full bg-[#4A148C] hover:bg-[#5C2C7A] text-white py-3 rounded-full font-semibold shadow-xs flex items-center justify-center gap-2 transition-all duration-300 disabled:bg-gray-300"
             >
               <span>{submitting ? 'Signing In...' : 'Sign In'}</span>
               <ArrowRight className="w-4 h-4" />
@@ -121,15 +121,15 @@ function LoginContent() {
           <div className="space-y-4 pt-4 border-t border-gray-100">
             <button
               onClick={handleGoogleMockLogin}
-              className="w-full border border-gray-200 hover:bg-gray-50 text-brand-navy py-3 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all"
+              className="w-full border border-gray-200 hover:bg-gray-50 text-[#2C3E50] py-3 rounded-full text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all bg-white"
             >
-              <User className="w-4 h-4 text-brand-coral" />
+              <User className="w-4 h-4 text-[#4A148C]" />
               <span>Login with Google (Firebase)</span>
             </button>
 
             <p className="text-sm text-gray-500 font-light">
               Don&apos;t have an account?{' '}
-              <Link href={`/register?redirect=${redirectPath}`} className="text-brand-coral font-semibold hover:underline">
+              <Link href={`/register?redirect=${redirectPath}`} className="text-[#4A148C] font-semibold hover:underline">
                 Register Here
               </Link>
             </p>

@@ -39,22 +39,25 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Temporary mock user for offline admin testing
-  const [user, setUser] = useState<UserType | null>({
-    _id: 'mock-admin-id-123456789012',
-    name: 'Admin Tester (Offline)',
-    email: 'admin@antigravity.com',
-    role: 'admin',
-    status: 'active',
-    addresses: [],
-  });
-  const [loading, setLoading] = useState<boolean>(false);
+  const [user, setUser] = useState<UserType | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
   const { showToast } = useToast();
 
   const refreshUser = useCallback(async () => {
-    // Keep mock user offline
-    setLoading(false);
+    try {
+      const res = await fetch('/api/auth/me');
+      const data = await res.json();
+      if (res.ok && data.user) {
+        setUser(data.user);
+      } else {
+        setUser(null);
+      }
+    } catch {
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -62,17 +65,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [refreshUser]);
 
   const login = async (email: string, password: string): Promise<boolean> => {
-    setUser({
-      _id: 'mock-admin-id-123456789012',
-      name: 'Admin Tester (Offline)',
-      email: 'admin@antigravity.com',
-      role: 'admin',
-      status: 'active',
-      addresses: [],
-    });
-    showToast('Logged in successfully (OFFLINE BYPASS)!', 'success');
-    router.push('/admin');
-    return true;
+    setLoading(true);
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        showToast(data.error || 'Login failed', 'error');
+        return false;
+      }
+      setUser(data.user);
+      showToast('Logged in successfully!', 'success');
+      
+      if (data.user.role === 'admin') {
+        router.push('/admin');
+      } else {
+        router.push('/dashboard');
+      }
+      return true;
+    } catch {
+      showToast('An error occurred during login', 'error');
+      return false;
+    } finally {
+      setLoading(false);
+    }
   };
 
   const loginWithGoogle = async (payload: {

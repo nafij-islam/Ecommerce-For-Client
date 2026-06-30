@@ -174,34 +174,30 @@ export const Header: React.FC = () => {
                     </div>
 
                     <Link
-                      href={user.role === 'admin' ? '/admin' : '/dashboard'}
+                      href="/dashboard"
                       onClick={() => setDropdownOpen(false)}
                       className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#2C3E50] hover:bg-gray-50 font-semibold transition-all"
                     >
-                      {user.role === 'admin' ? <Settings className="w-4 h-4 text-[#4A148C]" /> : <UserIcon className="w-4 h-4 text-[#4A148C]" />}
-                      <span>{user.role === 'admin' ? 'Admin Panel' : 'My Dashboard'}</span>
+                      <UserIcon className="w-4 h-4 text-[#4A148C]" />
+                      <span>My Dashboard</span>
                     </Link>
 
-                    {user.role !== 'admin' && (
-                      <>
-                        <Link
-                          href="/dashboard"
-                          onClick={() => setDropdownOpen(false)}
-                          className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#2C3E50] hover:bg-gray-50 font-semibold transition-all"
-                        >
-                          <Package className="w-4 h-4 text-[#4A148C]" />
-                          <span>My Orders</span>
-                        </Link>
-                        <Link
-                          href="/dashboard"
-                          onClick={() => setDropdownOpen(false)}
-                          className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#2C3E50] hover:bg-gray-50 font-semibold transition-all"
-                        >
-                          <Heart className="w-4 h-4 text-[#4A148C]" />
-                          <span>Favorite Dresses</span>
-                        </Link>
-                      </>
-                    )}
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setDropdownOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#2C3E50] hover:bg-gray-50 font-semibold transition-all"
+                    >
+                      <Package className="w-4 h-4 text-[#4A148C]" />
+                      <span>My Orders</span>
+                    </Link>
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setDropdownOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#2C3E50] hover:bg-gray-50 font-semibold transition-all"
+                    >
+                      <Heart className="w-4 h-4 text-[#4A148C]" />
+                      <span>Favorite Dresses</span>
+                    </Link>
 
                     <div className="border-t border-gray-50 mt-2 pt-2 px-2">
                       <button

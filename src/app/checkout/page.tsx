@@ -13,10 +13,18 @@ import { useToast } from '@/context/ToastContext';
 export default function CheckoutPage() {
   const router = useRouter();
   const { cart, cartSubtotal, cartDiscount, cartTotal, shippingFee, clearCart, coupon } = useCart();
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const { showToast } = useToast();
 
   const [submitting, setSubmitting] = useState(false);
+
+  // Require registration/login to checkout
+  useEffect(() => {
+    if (!authLoading && !user) {
+      showToast('You must be logged in to place an order.', 'warning');
+      router.push('/login?redirect=/checkout');
+    }
+  }, [user, authLoading, router, showToast]);
 
   // Form Fields
   const [name, setName] = useState('');
