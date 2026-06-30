@@ -149,3 +149,21 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #CBD5E1;
 }
+
+/* Standardize legacy brand navy backgrounds to new purple button styles (excluding admin dashboard) */
+:not(.bg-galaxy) button.bg-brand-navy,
+:not(.bg-galaxy) a.bg-brand-navy,
+:not(.bg-galaxy) .bg-brand-navy {
+  background-color: #4A148C !important;
+  color: #FFFFFF !important;
+}
+
+:not(.bg-galaxy) button.bg-brand-navy:hover,
+:not(.bg-galaxy) a.bg-brand-navy:hover,
+:not(.bg-galaxy) .bg-brand-navy:hover,
+:not(.bg-galaxy) button.hover\:bg-brand-navy:hover,
+:not(.bg-galaxy) a.hover\:bg-brand-navy:hover,
+:not(.bg-galaxy) .hover\:bg-brand-navy:hover {
+  background-color: #5C2C7A !important;
+  color: #FFFFFF !important;
+}
