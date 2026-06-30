@@ -65,9 +65,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="group relative bg-slate-900/60 backdrop-blur-md rounded-3xl overflow-hidden border border-white/10 hover:border-purple-500/35 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col h-full">
+    <div className="group relative bg-white rounded-3xl overflow-hidden border border-gray-200/60 hover:shadow-lg transition-all duration-300 flex flex-col h-full font-sans">
       {/* Image and Badges */}
-      <Link href={`/product/${product.slug}`} className="block relative aspect-[4/5] bg-purple-950/20 overflow-hidden">
+      <Link href={`/product/${product.slug}`} className="block relative aspect-[4/5] bg-gray-50 overflow-hidden">
         <Image
           src={product.thumbnail || '/placeholder-dress.jpg'}
           alt={product.name}
@@ -80,10 +80,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Wishlist Button */}
         <button
           onClick={handleWishlistToggle}
-          className={`absolute top-4 right-4 z-10 w-9 h-9 rounded-full flex items-center justify-center shadow-md border transition-all duration-300 hover:scale-110 ${
+          className={`absolute top-4 right-4 z-10 w-9 h-9 rounded-full flex items-center justify-center shadow-sm border transition-all duration-300 hover:scale-110 ${
             favorite
-              ? 'bg-[#a855f7] border-[#a855f7] text-white shadow-[0_0_10px_rgba(168,85,247,0.4)]'
-              : 'bg-slate-950/80 backdrop-blur-sm border-white/10 text-white hover:bg-slate-900'
+              ? 'bg-[#4A148C] border-[#4A148C] text-white shadow-[0_0_8px_rgba(74,20,140,0.3)]'
+              : 'bg-white/90 backdrop-blur-xs border-gray-200 text-[#333333] hover:bg-white'
           }`}
         >
           <Heart className="w-4.5 h-4.5" fill={favorite ? "currentColor" : "none"} />
@@ -92,17 +92,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Product Badges */}
         <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
           {product.isNewArrival && (
-            <span className="bg-emerald-500 text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full">
+            <span className="bg-[#4A148C] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full">
               New
             </span>
           )}
           {product.isBestSeller && (
-            <span className="bg-indigo-650 text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full">
+            <span className="bg-[#2C3E50] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full">
               Best
             </span>
           )}
           {hasDiscount && (
-            <span className="bg-[#a855f7] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full">
+            <span className="bg-[#D4AF37] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full">
               -{product.discountPercentage || Math.round(((originalPrice - displayPrice) / originalPrice) * 100)}%
             </span>
           )}
@@ -110,8 +110,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Stock warning */}
         {product.stock <= 0 && (
-          <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center">
-            <span className="bg-[#a855f7] text-white text-xs font-semibold px-4 py-2 rounded-full uppercase tracking-wider">
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-xs flex items-center justify-center">
+            <span className="bg-[#333333] text-white text-xs font-semibold px-4 py-2 rounded-full uppercase tracking-wider">
               Out of Stock
             </span>
           </div>
@@ -123,19 +123,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div>
           {/* Rating */}
           <div className="flex items-center gap-1 mb-2">
-            <div className="flex text-amber-400">
+            <div className="flex text-[#D4AF37]">
               <Star className="w-3.5 h-3.5 fill-current" />
               <Star className="w-3.5 h-3.5 fill-current" />
               <Star className="w-3.5 h-3.5 fill-current" />
               <Star className="w-3.5 h-3.5 fill-current" />
               <Star className="w-3.5 h-3.5 fill-current" />
             </div>
-            <span className="text-[11px] text-slate-400 font-semibold">(5.0)</span>
+            <span className="text-[11px] text-gray-500 font-semibold">(5.0)</span>
           </div>
 
           {/* Title */}
           <Link href={`/product/${product.slug}`} className="block">
-            <h3 className="font-playfair text-base font-bold text-white group-hover:text-[#a855f7] transition-colors line-clamp-2 leading-snug">
+            <h3 className="font-serif text-base font-bold text-[#333333] group-hover:text-[#4A148C] transition-colors line-clamp-2 leading-snug">
               {product.name}
             </h3>
           </Link>
@@ -144,16 +144,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Price & Action */}
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-extrabold text-white">৳{displayPrice}</span>
+            <span className="text-lg font-bold text-[#2C3E50]">৳{displayPrice}</span>
             {hasDiscount && (
-              <span className="text-sm text-slate-500 line-through">৳{originalPrice}</span>
+              <span className="text-sm text-gray-400 line-through">৳{originalPrice}</span>
             )}
           </div>
 
           {product.stock > 0 && (
             <button
               onClick={handleQuickAdd}
-              className="bg-purple-950/60 text-[#a855f7] hover:bg-[#a855f7] hover:text-white w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-sm border border-purple-500/20"
+              className="bg-[#4A148C] hover:bg-[#5C2C7A] text-white w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-xs border border-transparent"
               title="Quick Add to Cart"
             >
               <ShoppingCart className="w-4 h-4" />
@@ -164,4 +164,5 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     </div>
   );
 };
+
 export default ProductCard;

@@ -116,13 +116,13 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-galaxy text-slate-100">
+    <div className="flex flex-col min-h-screen bg-white text-[#333333] font-sans">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-12 md:py-16">
+      <section className="relative overflow-hidden py-12 md:py-16 bg-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="glass-panel rounded-[48px] overflow-hidden shadow-2xl border border-white/10 relative h-[650px] sm:h-[550px] lg:h-[500px] group">
+          <div className="bg-white rounded-[48px] overflow-hidden shadow-md border border-gray-100 relative h-[650px] sm:h-[550px] lg:h-[500px] group">
             
             {activeHeroBanners.map((slide, idx) => (
               <div
@@ -136,30 +136,30 @@ export default function HomePage() {
                 {/* Left Column (Content) */}
                 <div className="lg:col-span-7 p-10 sm:p-16 space-y-8 flex flex-col justify-center">
                   <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 bg-[#a855f7]/15 text-[#a855f7] text-xs uppercase font-bold tracking-widest px-4.5 py-2 rounded-full border border-purple-500/20">
-                      <span className="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
+                    <div className="inline-flex items-center gap-2 bg-[#4A148C]/10 text-[#4A148C] text-xs uppercase font-bold tracking-widest px-4.5 py-2 rounded-full border border-purple-500/10">
+                      <span className="w-2 h-2 rounded-full bg-[#4A148C] animate-pulse"></span>
                       <span>Exclusive Season Arrival</span>
                     </div>
-                    <h1 className="font-playfair text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                    <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#4A148C] leading-tight">
                       {slide.title}
                     </h1>
                   </div>
                   
-                  <p className="text-slate-300 font-light text-base sm:text-lg leading-relaxed max-w-xl">
+                  <p className="text-[#333333]/85 font-light text-base sm:text-lg leading-relaxed max-w-xl">
                     {slide.subtitle}
                   </p>
                   
                   <div className="flex flex-wrap gap-4">
                     <Link
                       href={slide.ctaLink || '/shop'}
-                      className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-8 py-4 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 border border-purple-400/20"
+                      className="inline-flex items-center justify-center bg-[#4A148C] hover:bg-[#5C2C7A] text-white px-8 py-4 rounded-full font-bold shadow-md transition-all duration-300 hover:scale-105"
                     >
                       <span>{slide.ctaText || 'Shop Now'}</span>
                       <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                     <Link
                       href="/shop?isNewArrival=true"
-                      className="inline-flex items-center justify-center bg-slate-900/60 border border-white/10 hover:bg-slate-800 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105"
+                      className="inline-flex items-center justify-center bg-white border border-gray-200 hover:bg-gray-50 text-[#2C3E50] px-8 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105"
                     >
                       View Collection
                     </Link>
@@ -175,7 +175,7 @@ export default function HomePage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     priority={idx === 0}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-950/40 to-transparent mix-blend-multiply"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-gray-50/20 to-transparent mix-blend-multiply"></div>
                 </div>
               </div>
             ))}
@@ -188,7 +188,7 @@ export default function HomePage() {
                     key={idx}
                     onClick={() => setCurrentHeroIndex(idx)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      idx === currentHeroIndex ? 'bg-[#a855f7] w-6 shadow-[0_0_10px_rgba(168,85,247,0.6)]' : 'bg-slate-700 hover:bg-slate-650'
+                      idx === currentHeroIndex ? 'bg-[#4A148C] w-6' : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
@@ -201,29 +201,29 @@ export default function HomePage() {
       </section>
 
       {/* Featured Categories */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-purple-400 text-xs font-bold uppercase tracking-wider">Beautiful Silhouettes</span>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mt-2">Shop by Category</h2>
-            <div className="h-1 w-12 bg-[#a855f7] mx-auto mt-4 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
+            <span className="text-[#4A148C] text-xs font-bold uppercase tracking-wider">Beautiful Silhouettes</span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#2C3E50] mt-2">Shop by Category</h2>
+            <div className="h-1 w-12 bg-[#D4AF37] mx-auto mt-4 rounded-full"></div>
           </div>
 
           {loading ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-square bg-slate-900/60 rounded-3xl animate-pulse border border-white/5"></div>
+                <div key={i} className="aspect-square bg-gray-100 rounded-3xl animate-pulse"></div>
               ))}
             </div>
           ) : categories.length === 0 ? (
-            <div className="text-center text-slate-400 font-light">No categories created yet.</div>
+            <div className="text-center text-gray-500 font-light">No categories created yet.</div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {categories.slice(0, 4).map((cat) => (
                 <Link
                   key={cat._id}
                   href={`/shop?category=${cat.slug}`}
-                  className="group relative aspect-square rounded-[32px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-slate-900 border border-white/10 hover:border-purple-500/30"
+                  className="group relative aspect-square rounded-[32px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-gray-50 border border-gray-100"
                 >
                   <Image
                     src={cat.image || 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=300'}
@@ -231,8 +231,8 @@ export default function HomePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex flex-col justify-end p-6">
-                    <h3 className="font-playfair text-lg sm:text-xl font-bold text-white group-hover:text-[#a855f7] transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E50]/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                    <h3 className="font-serif text-lg sm:text-xl font-bold text-white group-hover:text-[#D4AF37] transition-colors">
                       {cat.name}
                     </h3>
                     <p className="text-xs text-white/70 mt-1 font-light flex items-center gap-1">
@@ -248,14 +248,14 @@ export default function HomePage() {
       </section>
 
       {/* New Arrivals Section */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-20 bg-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between mb-12 gap-4">
             <div>
-              <span className="text-purple-400 text-xs font-bold uppercase tracking-wider">Fresh Styles</span>
-              <h2 className="font-playfair text-3xl font-bold text-white mt-1">New Arrivals</h2>
+              <span className="text-[#4A148C] text-xs font-bold uppercase tracking-wider">Fresh Styles</span>
+              <h2 className="font-serif text-3xl font-bold text-[#2C3E50] mt-1">New Arrivals</h2>
             </div>
-            <Link href="/shop?isNewArrival=true" className="text-purple-400 hover:text-purple-300 font-bold text-sm flex items-center gap-1.5 transition-colors">
+            <Link href="/shop?isNewArrival=true" className="text-[#4A148C] hover:text-[#5C2C7A] font-bold text-sm flex items-center gap-1.5 transition-colors">
               <span>View All New</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
@@ -264,11 +264,11 @@ export default function HomePage() {
           {loading ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-[4/5] bg-slate-900/60 rounded-3xl animate-pulse border border-white/5"></div>
+                <div key={i} className="aspect-[4/5] bg-gray-150 rounded-3xl animate-pulse"></div>
               ))}
             </div>
           ) : newArrivals.length === 0 ? (
-            <div className="text-center py-12 text-slate-400 font-light bg-slate-900/40 rounded-3xl border border-white/10">
+            <div className="text-center py-12 text-gray-500 font-light bg-white rounded-3xl border border-gray-100">
               No new arrivals yet. Stay tuned!
             </div>
           ) : (
@@ -283,28 +283,28 @@ export default function HomePage() {
 
       {/* Sales Promotional Banner */}
       <section className="my-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-[48px] overflow-hidden shadow-2xl border border-white/10 grid grid-cols-1 lg:grid-cols-12 min-h-[460px] items-center relative group">
+        <div className="bg-white rounded-[48px] overflow-hidden shadow-md border border-gray-100 grid grid-cols-1 lg:grid-cols-12 min-h-[460px] items-center relative group">
           
           {/* Left Column (Content) */}
           <div className="lg:col-span-7 p-10 sm:p-16 space-y-8 flex flex-col justify-center z-10">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-[#a855f7]/15 text-[#a855f7] text-xs uppercase font-bold tracking-widest px-4.5 py-2 rounded-full border border-purple-500/20">
-                <span className="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
+              <div className="inline-flex items-center gap-2 bg-[#4A148C]/10 text-[#4A148C] text-xs uppercase font-bold tracking-widest px-4.5 py-2 rounded-full border border-purple-500/10">
+                <span className="w-2 h-2 rounded-full bg-[#4A148C] animate-pulse"></span>
                 <span>Season Sale Banner</span>
               </div>
-              <h2 className="font-playfair text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#4A148C] leading-tight">
                 {salesBanner.title}
               </h2>
             </div>
             
-            <p className="text-slate-300 font-light text-base sm:text-lg leading-relaxed max-w-xl">
+            <p className="text-[#333333]/85 font-light text-base sm:text-lg leading-relaxed max-w-xl">
               {salesBanner.subtitle}
             </p>
             
             <div>
               <Link
                 href={salesBanner.ctaLink || '/shop?isOnSale=true'}
-                className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-10 py-4.5 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 border border-purple-400/20"
+                className="inline-flex items-center justify-center bg-[#4A148C] hover:bg-[#5C2C7A] text-white px-10 py-4.5 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105"
               >
                 <span>{salesBanner.ctaText || 'Discover Sale'}</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
@@ -320,21 +320,21 @@ export default function HomePage() {
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-950/40 to-transparent mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-gray-50/20 to-transparent mix-blend-multiply"></div>
           </div>
 
         </div>
       </section>
 
       {/* Best Sellers Section */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between mb-12 gap-4">
             <div>
-              <span className="text-purple-400 text-xs font-bold uppercase tracking-wider">Top Rated Choices</span>
-              <h2 className="font-playfair text-3xl font-bold text-white mt-1">Best Sellers</h2>
+              <span className="text-[#4A148C] text-xs font-bold uppercase tracking-wider">Top Rated Choices</span>
+              <h2 className="font-serif text-3xl font-bold text-[#2C3E50] mt-1">Best Sellers</h2>
             </div>
-            <Link href="/shop?isBestSeller=true" className="text-purple-400 hover:text-purple-300 font-bold text-sm flex items-center gap-1.5 transition-colors">
+            <Link href="/shop?isBestSeller=true" className="text-[#4A148C] hover:text-[#5C2C7A] font-bold text-sm flex items-center gap-1.5 transition-colors">
               <span>Explore Best Sellers</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
@@ -343,11 +343,11 @@ export default function HomePage() {
           {loading ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-[4/5] bg-slate-900/60 rounded-3xl animate-pulse border border-white/5"></div>
+                <div key={i} className="aspect-[4/5] bg-gray-150 rounded-3xl animate-pulse"></div>
               ))}
             </div>
           ) : bestSellers.length === 0 ? (
-            <div className="text-center py-12 text-slate-400 font-light bg-slate-900/40 rounded-3xl border border-white/10">
+            <div className="text-center py-12 text-gray-500 font-light bg-slate-50 rounded-3xl border border-gray-200">
               Products will appear here once orders stack up!
             </div>
           ) : (
@@ -361,44 +361,44 @@ export default function HomePage() {
       </section>
 
       {/* Why Shop With Us Section */}
-      <section className="py-20 border-y border-white/10">
+      <section className="py-20 border-y border-gray-100 bg-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Card 1 */}
-            <div className="glass-panel p-8 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex items-start gap-6 group">
-              <div className="bg-purple-950/60 text-[#a855f7] p-4 rounded-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm border border-purple-500/20">
+            <div className="bg-white p-8 rounded-[32px] shadow-xs border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex items-start gap-6 group">
+              <div className="bg-[#4A148C]/10 text-[#4A148C] p-4 rounded-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-xs border border-purple-550/10">
                 <Truck className="w-6 h-6" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-playfair text-xl font-bold text-white">Fast Delivery</h3>
-                <p className="text-sm text-slate-300 font-light leading-relaxed">
+                <h3 className="font-serif text-xl font-bold text-[#2C3E50]">Fast Delivery</h3>
+                <p className="text-sm text-[#333333]/80 font-light leading-relaxed">
                   Free delivery on orders over ৳3000 nationwide with careful premium packaging.
                 </p>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="glass-panel p-8 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex items-start gap-6 group">
-              <div className="bg-purple-950/60 text-[#a855f7] p-4 rounded-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm border border-purple-500/20">
+            <div className="bg-white p-8 rounded-[32px] shadow-xs border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex items-start gap-6 group">
+              <div className="bg-[#4A148C]/10 text-[#4A148C] p-4 rounded-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-xs border border-purple-550/10">
                 <RefreshCw className="w-6 h-6" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-playfair text-xl font-bold text-white">Easy Returns</h3>
-                <p className="text-sm text-slate-300 font-light leading-relaxed">
+                <h3 className="font-serif text-xl font-bold text-[#2C3E50]">Easy Returns</h3>
+                <p className="text-sm text-[#333333]/80 font-light leading-relaxed">
                   Not the perfect fit? Return within 7 days for exchange or refund, no questions asked.
                 </p>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="glass-panel p-8 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex items-start gap-6 group">
-              <div className="bg-purple-950/60 text-[#a855f7] p-4 rounded-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm border border-purple-500/20">
+            <div className="bg-white p-8 rounded-[32px] shadow-xs border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex items-start gap-6 group">
+              <div className="bg-[#4A148C]/10 text-[#4A148C] p-4 rounded-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-xs border border-purple-550/10">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-playfair text-xl font-bold text-white">Secure Payment</h3>
-                <p className="text-sm text-slate-300 font-light leading-relaxed">
+                <h3 className="font-serif text-xl font-bold text-[#2C3E50]">Secure Payment</h3>
+                <p className="text-sm text-[#333333]/80 font-light leading-relaxed">
                   Multiple secure payment gateways ready or Cash on Delivery for absolute peace of mind.
                 </p>
               </div>
@@ -409,12 +409,12 @@ export default function HomePage() {
       </section>
 
       {/* Customer Reviews Section */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-purple-400 text-xs font-bold uppercase tracking-wider">Loving Feedback</span>
-            <h2 className="font-playfair text-3xl font-bold text-white mt-1">What Our Customers Say</h2>
-            <div className="h-1 w-12 bg-[#a855f7] mx-auto mt-4 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
+            <span className="text-[#4A148C] text-xs font-bold uppercase tracking-wider">Loving Feedback</span>
+            <h2 className="font-serif text-3xl font-bold text-[#2C3E50] mt-1">What Our Customers Say</h2>
+            <div className="h-1 w-12 bg-[#D4AF37] mx-auto mt-4 rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -423,18 +423,18 @@ export default function HomePage() {
               { name: 'Sadia Islam', review: 'Beautiful packaging and super fast shipping to Chittagong. The fabric quality is very premium. Will definitely buy again.', role: 'Verified buyer' },
               { name: 'Tasmia Karim', review: 'The variant colors look exactly like the pictures. Soft coral highlights are to die for. Customer service was very supportive.', role: 'Verified buyer' }
             ].map((rev, i) => (
-              <div key={i} className="glass-panel p-8 rounded-3xl shadow-sm space-y-4">
-                <div className="flex text-amber-400">
+              <div key={i} className="bg-[#FAF9F5] p-8 rounded-3xl shadow-xs space-y-4 border border-gray-100">
+                <div className="flex text-[#D4AF37]">
                   {[...Array(5)].map((_, starIdx) => (
                     <Star key={starIdx} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed font-light italic">
+                <p className="text-[#333333]/85 text-sm leading-relaxed font-light italic">
                   &ldquo;{rev.review}&rdquo;
                 </p>
                 <div className="pt-2">
-                  <h4 className="font-bold text-white text-sm">{rev.name}</h4>
-                  <span className="text-xs text-purple-300 font-bold">{rev.role}</span>
+                  <h4 className="font-bold text-[#2C3E50] text-sm">{rev.name}</h4>
+                  <span className="text-xs text-[#4A148C] font-bold">{rev.role}</span>
                 </div>
               </div>
             ))}
@@ -443,13 +443,13 @@ export default function HomePage() {
       </section>
 
       {/* Newsletter / Join the Club Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-tr from-purple-950/80 via-slate-900/90 to-pink-955/80 text-[#FAF6F0] rounded-[40px] my-10 max-w-7xl mx-auto px-6 sm:px-12 border border-white/10 shadow-[0_0_30px_rgba(168,85,247,0.1)] relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-[#2C3E50] text-[#FAF6F0] rounded-[40px] my-10 max-w-7xl mx-auto px-6 sm:px-12 border border-gray-700/30 shadow-md relative overflow-hidden">
         {/* Ambient glow inside */}
         <div className="absolute top-[-30%] right-[-10%] w-[350px] h-[350px] rounded-full bg-white/5 blur-3xl pointer-events-none"></div>
 
         <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white glow-text">Join the 'Rongher Chua Butik' Fashion Club</h2>
-          <p className="text-slate-300 font-light text-sm sm:text-base max-w-lg mx-auto">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#D4AF37]">Join the 'Rongher Chua Butik' Fashion Club</h2>
+          <p className="text-white/80 font-light text-sm sm:text-base max-w-lg mx-auto">
             Subscribe to receive alerts about new arrivals, private discount coupons, and fashion collection releases.
           </p>
 
@@ -460,18 +460,18 @@ export default function HomePage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-5 py-3 rounded-full border border-white/15 text-sm focus:outline-none focus:ring-1 focus:ring-purple-500 bg-slate-900/60 text-white placeholder-slate-400"
+              className="flex-1 px-5 py-3 rounded-full border border-gray-600 text-sm focus:outline-none focus:ring-1 focus:ring-[#D4AF37] bg-white/10 text-white placeholder-white/50"
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-purple-600 to-pink-650 text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 border border-purple-500/20 shadow-md"
+              className="bg-[#4A148C] hover:bg-[#5C2C7A] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 border border-transparent shadow-md"
             >
               Subscribe
             </button>
           </form>
 
           {newsletterMsg && (
-            <p className="text-sm font-medium text-purple-400 animate-fade-in">{newsletterMsg}</p>
+            <p className="text-sm font-medium text-[#D4AF37] animate-fade-in">{newsletterMsg}</p>
           )}
         </div>
       </section>
